@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const TodoInput = ({ addTodo }) => {
   const [todo, setTodo] = useState("");
-  console.log(todo);
+  // console.log(todo);
 
   return (
     <div className="row input-wrapper">
