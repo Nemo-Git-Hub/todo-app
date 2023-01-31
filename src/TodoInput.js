@@ -3,6 +3,12 @@ import { useState } from "react";
 const TodoInput = ({ addTodo }) => {
   const [todo, setTodo] = useState("");
   // console.log(todo);
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addTodo(todo);
+      setTodo("");
+    }
+  };
 
   return (
     <div className="row input-wrapper">
@@ -12,6 +18,7 @@ const TodoInput = ({ addTodo }) => {
         className="col input-folder"
         placeholder="Create new task..."
         value={todo}
+        onKeyDown={handleKeyDown}
         onChange={(e) => {
           setTodo(e.target.value);
         }}
