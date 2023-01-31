@@ -8,7 +8,6 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   const deleteTodo = (id) => {
-    console.log(id);
     const newTodos = todos.filter((todo) => {
       return todo.id !== id;
     });
@@ -20,6 +19,17 @@ function App() {
       ...todos,
       { id: nanoid(), name: todoValue, isCompleted: false, isEdit: false },
     ]);
+  };
+
+  const toggleIsCompleted = (id) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, isCompleted: !todo.isCompleted };
+      }
+
+      return todo;
+    });
+    setTodos(newTodos);
   };
 
   return (
@@ -40,7 +50,11 @@ function App() {
         <TodoInput addTodo={addTodo} />
       </section>
       <section className="todo-list">
-        <TodoList list={todos} deleteTodo={deleteTodo} />
+        <TodoList
+          list={todos}
+          deleteTodo={deleteTodo}
+          toggleIsCompleted={toggleIsCompleted}
+        />
       </section>
     </div>
   );
