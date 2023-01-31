@@ -3,7 +3,6 @@ import logo from "./logo.svg";
 import { nanoid } from "nanoid";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
-// import "./App.css";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -14,7 +13,6 @@ function App() {
       { id: nanoid(), name: todoValue, isComlete: false, isEdit: false },
     ]);
   };
-  console.log(todos);
 
   return (
     <div className="App">
@@ -35,14 +33,6 @@ function App() {
       </section>
       <section className="todo-list">
         <TodoList list={todos} />
-        {/* {todos.map((todo) => (
-          <li key={todo.id}>{todo.name}</li>
-        ))} */}
-        {/* <li>
-          {todos.map(() => {
-            [todos.name];
-          })}
-        </li> */}
       </section>
     </div>
   );

@@ -1,7 +1,6 @@
 import Todo from "./Todo";
 
 const TodoList = ({ list }) => {
-  console.log(list);
   return (
     <>
       <div className="todo-list">
