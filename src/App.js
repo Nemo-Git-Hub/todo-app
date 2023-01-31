@@ -2,15 +2,17 @@ import { useState } from "react";
 import logo from "./logo.svg";
 import { nanoid } from "nanoid";
 import TodoInput from "./TodoInput";
-import "./App.css";
+import TodoList from "./TodoList";
 
 function App() {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (todoValue) => {
-    setTodos([...todos, { id: nanoid(), name: todoValue, isComlete: false }]);
+    setTodos([
+      ...todos,
+      { id: nanoid(), name: todoValue, isComlete: false, isEdit: false },
+    ]);
   };
-  console.log(todos);
 
   return (
     <div className="App">
@@ -28,6 +30,9 @@ function App() {
       </header>
       <section className="todo-input">
         <TodoInput addTodo={addTodo} />
+      </section>
+      <section className="todo-list">
+        <TodoList list={todos} />
       </section>
     </div>
   );
