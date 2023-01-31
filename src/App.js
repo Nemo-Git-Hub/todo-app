@@ -7,10 +7,18 @@ import TodoList from "./TodoList";
 function App() {
   const [todos, setTodos] = useState([]);
 
+  const deleteTodo = (id) => {
+    console.log(id);
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== id;
+    });
+    setTodos(newTodos);
+  };
+
   const addTodo = (todoValue) => {
     setTodos([
       ...todos,
-      { id: nanoid(), name: todoValue, isComlete: false, isEdit: false },
+      { id: nanoid(), name: todoValue, isCompleted: false, isEdit: false },
     ]);
   };
 
@@ -32,7 +40,7 @@ function App() {
         <TodoInput addTodo={addTodo} />
       </section>
       <section className="todo-list">
-        <TodoList list={todos} />
+        <TodoList list={todos} deleteTodo={deleteTodo} />
       </section>
     </div>
   );
