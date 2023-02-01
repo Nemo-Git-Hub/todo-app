@@ -10,7 +10,7 @@ const TodoInput = ({ addTodo }) => {
   };
 
   return (
-    <div className="row input-wrapper">
+    <div className="row container justify-content-center input-wrapper">
       <input
         type="text"
         name="todo"

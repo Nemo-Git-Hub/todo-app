@@ -14,6 +14,20 @@ function App() {
     setTodos(newTodos);
   };
 
+  const deleteCompleted = () => {
+    const newTodos = todos.filter((todo) => {
+      return !todo.isCompleted;
+    });
+    setTodos(newTodos);
+  };
+
+  const deleteAll = () => {
+    const newTodos = todos.filter((todo) => {
+      return !todo.id;
+    });
+    setTodos(newTodos);
+  };
+
   const addTodo = (todoValue) => {
     setTodos([
       ...todos,
@@ -26,10 +40,29 @@ function App() {
       if (todo.id === id) {
         return { ...todo, isCompleted: !todo.isCompleted };
       }
-
       return todo;
     });
     setTodos(newTodos);
+  };
+
+  const editTodo = (id, value) => {
+    const updateTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, name: value };
+      }
+      return todo;
+    });
+    setTodos(updateTodos);
+  };
+
+  const sortByCompleted = () => {
+    const completedAscending = [...todos].sort((a, b) =>
+      a.isCompleted > b.isCompleted ? 1 : -1
+    );
+    completedAscending.map((todo) => {
+      return todo;
+    });
+    setTodos(completedAscending);
   };
 
   return (
@@ -54,6 +87,10 @@ function App() {
           list={todos}
           deleteTodo={deleteTodo}
           toggleIsCompleted={toggleIsCompleted}
+          editTodo={editTodo}
+          deleteCompleted={deleteCompleted}
+          deleteAll={deleteAll}
+          sortByCompleted={sortByCompleted}
         />
       </section>
     </div>
