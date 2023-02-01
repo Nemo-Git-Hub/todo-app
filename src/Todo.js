@@ -19,7 +19,7 @@ const Todo = ({
 
   return (
     <>
-      <div className="row container justify-content-between">
+      <div className="row container justify-content-between todo">
         {isEdit ? (
           <div className="row container justify-content-center input-wrapper">
             <input
@@ -53,7 +53,10 @@ const Todo = ({
                 toggleIsCompleted(id);
               }}
             />
-            <label for={id} className="col-6">
+            <label
+              for={id}
+              className={`col-6 todo-task ${isCompleted ? "completed" : ""}`}
+            >
               {name}
             </label>
 
