@@ -4,6 +4,15 @@ import { nanoid } from "nanoid";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 
+/*
+- move all handler from jsx to body component.
+- change todos model from [](array) to {}(object) for better performance.
+- rebase all handlers to new model.
+- remove logs.
+- check nesting tags in jsx and fix it. (<div/> in <p/>)
+- unify naming of handlers.
+*/
+
 function App() {
   const [todos, setTodos] = useState([]);
 
